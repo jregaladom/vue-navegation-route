@@ -1,5 +1,5 @@
 <script setup>
-const isProduction = import.meta.env.VITE_STAGE;
+const isDev = import.meta.env.VITE_STAGE === 'dev';
 </script>
 
 <template>
@@ -8,7 +8,7 @@ const isProduction = import.meta.env.VITE_STAGE;
     <router-link :to="{ name : 'session' }" >Sesion</router-link>
     <router-link to="chats" >Chats</router-link>
     <router-link :to="{name : 'about'}" >About</router-link>
-    <router-link v-if="isProduction" :to="{name : 'profile'}" >Profile</router-link>
+    <router-link v-if="isDev" :to="{name : 'profile'}" >Profile</router-link>
     
   </div>
  <router-view /> 

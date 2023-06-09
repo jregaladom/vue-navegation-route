@@ -11,20 +11,50 @@
   </div>
 </template>
 
-<script>
+<!-- <script>
 
 export default{
   data(){
     return {
       chats : [
-        {id: 1, name: 'Ximena'},
-        {id: 2, name: 'Alberto'},
-        {id: 3, name: 'Laura'},
-        {id: 4, name: 'Luis'},
-        {id: 5, name: 'Pedro'},
-        {id: 6, name: 'Ana'},
+      
       ]
     }
-  }
+  },
+  created(){
+   this.$watch(
+    ()=>this.$route.params,
+    (val) => {
+      console.log('update params', val)
+      this.chats = [
+          { id: 1, name: 'Ximena' },
+          { id: 2, name: 'Daniel' },
+          { id: 3, name: 'Miguel' }
+        ]
+    },{
+      immediate: true}
+   )
+  },
 }
+</script> -->
+
+<script setup>
+import { ref, watch } from 'vue';
+import { useRouter } from 'vue-router';
+const chats = ref([]);
+const route = useRouter();
+console.log(route.params);
+
+watch(
+  () => route.params,
+  (val) => {
+  console.log('update params', val)
+  chats.value = [
+    { id: 1, name: 'Ximena' },
+    { id: 2, name: 'Daniel' },
+    { id: 3, name: 'Miguel' }
+  ]
+}, {
+  immediate: true
+})
 </script>

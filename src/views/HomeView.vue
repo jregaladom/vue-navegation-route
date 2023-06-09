@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
 export default {
   data() {
     return {
@@ -10,6 +10,17 @@ export default {
       this.$router.push({ path: 'chats', query: { variable1:1}, replace: true})
     }
   }
+}
+</script> -->
+
+<script setup>
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+const username = ref('');
+
+const router = useRouter();
+const iniciarSesion = () => {
+  router.push({ path: 'chats', query: { variable1:1}, replace: true})
 }
 </script>
 
